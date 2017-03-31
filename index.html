@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body ng-controller="myCtr">
+	<div class="main">
+		<div class="container">
+			<nav class="navbar navbar-inverse">
+				<div class="nav">
+					<div class="container-fluid">
+						<div class="navbar-header"> <a class="navbar-brand" href="#">COUNTRIES PHONE CODE</a> </div>
+						<form class="navbar-form navbar-right">
+							<div class="form-group search">
+								<input type="text" class="form-control" placeholder="Search" ng-model="search"> </div>
+							<button type="submit" class="btn btn-success" ng-click="addCountry()">Add new country</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+			<table class="table table-bordered">
+				<thead>
+					<tr class="changeButtons">
+						<th class='col-md-8'>COUNTRIES</th>
+						<th class='col-md-2'>CODE</th>
+						<th class='col-md-2'>CHANGE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="key in data | filter:search | orderBy:'name'">
+						<td>{{key.name}}</td>
+						<td>{{key.code}}</td>
+						<th class="changeButtons">
+							<button type="button" class="btn btn-warning" ng-click="change(key)">change</button>
+							<button type="button" class="btn btn-danger" ng-click="delete(key)">delete</button>
+						</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script src="js/main.js"></script>
+	<script src="js/proect.js"></script>
+</body>
+
+</html>
